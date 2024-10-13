@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+  height: 100vh;
+}

@@ -1,0 +1,27 @@
+.container {
+  max-height: 600px;
+  height: 100%;
+  width: 100%;
+  padding: 80px 40px 210px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: 96px;
+}
+
+.btn {
+  max-width: 218px;
+  height: 58px;
+  width: 100%;
+  padding: 0;
+  font-weight: 600;
+  font-size: 20;
+  line-height: 130%;
+  color: #ffffff;
+}

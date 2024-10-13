@@ -1,0 +1,25 @@
+.error {
+  padding-top: 5px;
+  color: red;
+  font-size: 12px;
+}
+
+.input_container {
+  width: 100%;
+}
+
+.input {
+  max-width: 516px;
+  width: 100%;
+  padding: 16px 32px;
+  background: #0a40bb;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+}
+
+.input::placeholder {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+}
