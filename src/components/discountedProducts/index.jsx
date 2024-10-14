@@ -19,7 +19,6 @@ function DiscountedProducts() {
       newArrSales.push(randomProduct);
     }
   }
-  console.log(newArrSales);
 
   //     Эта секция отображает четыре случайных товаров со скидкой. Для ее реализации
   // потребуется:
@@ -43,6 +42,9 @@ function DiscountedProducts() {
       <div className={styles.cards_container}>
         {newArrSales &&
           newArrSales.map((product) => {
+            let sale = Math.floor(
+              ((product.price - product.discont_price) / product.price) * 100
+            );
             return (
               <Link
                 key={product.id}
@@ -50,16 +52,22 @@ function DiscountedProducts() {
                 className={styles.link}
               >
                 <div className={styles.card_container}>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className={styles.img}
-                  />
-
-                  <p className={styles.card_title}>{product.title}</p>
-                  <div className={styles.price_container}>
-                    <p>{product.price}</p>
-                    <p>{product.discont_price}</p>
+                  <div className={styles.img_container}>
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className={styles.img}
+                    />
+                    <p className={styles.sale}>-{sale}%</p>
+                  </div>
+                  <div className={styles.text_container}>
+                    <p className={styles.card_title}>{product.title}</p>
+                    <div className={styles.price_container}>
+                      <p className={styles.discont_price}>
+                        {product.discont_price}
+                      </p>
+                      <p className={styles.price}>${product.price}</p>
+                    </div>
                   </div>
                 </div>
               </Link>

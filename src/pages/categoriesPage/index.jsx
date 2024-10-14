@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
+import Card from "../../components/card";
 
 function CategoriesPage() {
   const { categories, status, error } = useSelector(
@@ -21,16 +22,25 @@ function CategoriesPage() {
   // категорий.
 
   return (
-    <div>
-      {status === "succeeded" &&
-        categories.map((category) => {
-          return (
-            <div key={category.id}>
-              <img src={category.image} alt={category.title} />
-              <p>{category.title}</p>
-            </div>
-          );
-        })}
+    <div className={styles.categoriesPage_container}>
+      <div className={styles.routes_container}>
+        <p className={styles.main_page_rout}>Main page</p>
+        <hr className={styles.hr} />
+        <p className={styles.categories_page_rout}>Categories</p>
+      </div>
+      <h1 className={styles.categories_text}>Categories</h1>
+      <div className={styles.cards_container}>
+        {status === "succeeded" &&
+          categories.map((category) => {
+            return (
+              <Card
+                id={category.id}
+                image={category.image}
+                title={category.title}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }

@@ -26,7 +26,7 @@ function Header() {
         <NavLink to="/" className={styles.navlink}>
           Main Page
         </NavLink>
-        <NavLink to="/categories" className={styles.navlink}>
+        <NavLink to="/categories/all" className={styles.navlink}>
           Categories
         </NavLink>
         <NavLink to="/allProducts" className={styles.navlink}>

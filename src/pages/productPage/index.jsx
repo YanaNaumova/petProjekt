@@ -1,6 +1,12 @@
 import styles from "./styles.module.css";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProduct } from "../../redux/slices/productSlice";
 
 function ProductPage() {
+  const { productId } = useParams();
+  // axios.get(`http://localhost:3333/products/${productId}`)
   //     Переход на страницу продукта при клике на карточку товара
   // Используйте `react-router-dom` для настройки маршрутов. Добавьте маршрут для
   // страницы продукта, который будет включать параметр `id` продукта, например,
@@ -25,7 +31,30 @@ function ProductPage() {
   // ● Используйте глобальное состояние приложения (например, Redux) для
   // управления состоянием корзины. В обработчике кнопки вызывайте
   // соответствующее действие, которое добавляет продукт в корзину.
-  return <div className={styles.productPage_container}>Product Page</div>;
+  const dispatch = useDispatch();
+  const { product, status, error } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProduct(productId));
+  }, [dispatch, productId]);
+
+  if (status === "failed") return <h1>{error}Error</h1>;
+  if (status === "loading") return <h1>loading ...</h1>;
+
+  return (
+    status === "succeeded" &&
+    product.map((element) => {
+      return (
+        <div className={styles.productPage_container} key={element.id}>
+          <img src={element.image} alt={element.title} />
+          <p>{element.title}</p>
+          <p>{element.price}</p>
+          <p>{element.discont_price}</p>
+          <p>{element.description}</p>
+        </div>
+      );
+    })
+  );
 }
 
 export default ProductPage;

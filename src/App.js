@@ -88,12 +88,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/categories/all" element={<CategoriesPage />} />
         <Route path="/allProducts" element={<ProductsPage />} />
         <Route path="/allSales" element={<DiscountedItemsPage />} />
         <Route path="/cartPage" element={<CartPage />} />
         <Route path="/categories/:categoryId" element={<CategoryPage />} />
-        <Route path="/products/product.id" element={<ProductPage />} />
+        <Route path="/products/:productId" element={<ProductPage />} />
       </Routes>
       <Footer />
     </div>
