@@ -11,6 +11,8 @@ import CartPage from "./pages/cartPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategories } from "./redux/slices/categoriesSlice";
+import { fetchProducts } from "./redux/slices/productsSlice";
+import ProductPage from "./pages/productPage";
 
 function App() {
   // Получение всех категорий: `/categories/all
@@ -78,6 +80,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   return (
@@ -90,6 +93,7 @@ function App() {
         <Route path="/allSales" element={<DiscountedItemsPage />} />
         <Route path="/cartPage" element={<CartPage />} />
         <Route path="/categories/:categoryId" element={<CategoryPage />} />
+        <Route path="/products/product.id" element={<ProductPage />} />
       </Routes>
       <Footer />
     </div>

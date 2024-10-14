@@ -25,7 +25,7 @@ function ProductPage() {
   // ● Используйте глобальное состояние приложения (например, Redux) для
   // управления состоянием корзины. В обработчике кнопки вызывайте
   // соответствующее действие, которое добавляет продукт в корзину.
-  return <div className={styles.productPage_container}></div>;
+  return <div className={styles.productPage_container}>Product Page</div>;
 }
 
 export default ProductPage;
