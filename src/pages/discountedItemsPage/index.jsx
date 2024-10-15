@@ -1,5 +1,8 @@
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
+import ProductCard from "../../components/productCard";
+import RoutsBtn from "../../components/routsBtn";
+import CustomHeader from "../../components/customHeader";
 
 function DiscountedItemsPage() {
   //     То же самое, что и страница определенной категории товаров, но здесь только
@@ -8,6 +11,16 @@ function DiscountedItemsPage() {
   // ● Товары можно отсортировать.
   // ● Карточки товаров с возможностью добавления товара в корзину.
   const { products, status, error } = useSelector((state) => state.products);
+  const obj = [
+    {
+      link: "/",
+      title: "Main page",
+    },
+    {
+      link: `/allSales`,
+      title: "All Sales",
+    },
+  ];
 
   const productsSale = products.filter(
     (product) => product.discont_price != null
@@ -17,17 +30,23 @@ function DiscountedItemsPage() {
   if (status === "loading") return <h1>loading ...</h1>;
   return (
     <div className={styles.discountedItemsPage_container}>
-      {status === "succeeded" &&
-        productsSale.map((product) => {
-          return (
-            <div key={product.id}>
-              <img src={product.image} alt={product.title} />
-              <p>{product.discont_price}</p>
-              <p>{product.price}</p>
-              <p>{product.title}</p>
-            </div>
-          );
-        })}
+      <RoutsBtn obj={obj} />
+      <CustomHeader title="Discounted items" />
+      <div className={styles.cards_container}>
+        {status === "succeeded" &&
+          productsSale.map((product) => {
+            return (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                price={product.price}
+                discont_price={product.discont_price}
+                image={product.image}
+                title={product.title}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }

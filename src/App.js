@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { fetchCategories } from "./redux/slices/categoriesSlice";
 import { fetchProducts } from "./redux/slices/productsSlice";
 import ProductPage from "./pages/productPage";
+import Error404Page from "./pages/error404Page";
 
 function App() {
   // Получение всех категорий: `/categories/all
@@ -94,6 +95,7 @@ function App() {
         <Route path="/cartPage" element={<CartPage />} />
         <Route path="/categories/:categoryId" element={<CategoryPage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
+        <Route path="*" element={<Error404Page />} />
       </Routes>
       <Footer />
     </div>

@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import Card from "../../components/card";
 import RoutsBtn from "../../components/routsBtn";
+import CustomHeader from "../../components/customHeader";
 
 function CategoriesPage() {
   const { categories, status, error } = useSelector(
@@ -36,7 +37,7 @@ function CategoriesPage() {
   return (
     <div className={styles.categoriesPage_container}>
       <RoutsBtn obj={obj} />
-      <h1 className={styles.categories_text}>Categories</h1>
+      <CustomHeader title="Categories" />
       <div className={styles.cards_container}>
         {status === "succeeded" &&
           categories.map((category) => {

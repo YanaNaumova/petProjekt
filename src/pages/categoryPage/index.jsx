@@ -2,9 +2,16 @@ import styles from "./styles.module.css";
 import { useParams } from "react-router-dom";
 import { fetchCategory } from "../../redux/slices/categorySlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { Select, InputNumber } from "antd";
+import { useEffect, useState } from "react";
+import { Select } from "antd";
 import ProductCard from "../../components/productCard";
+import RoutsBtn from "../../components/routsBtn";
+import {
+  filterPrice,
+  sorterFilter,
+  filterCheckbox,
+} from "../../redux/slices/filterSlice";
+import CustomHeader from "../../components/customHeader";
 
 function CategoryPage() {
   //     Переход на страницу категории при клике на категорию
@@ -32,60 +39,101 @@ function CategoryPage() {
   // корзину.
   // ● Если на товар действует скидка, то это должно отображаться на карточке.
   // ● Товары можно отфильтровать по новизне, цене.
+
   const { categoryId } = useParams();
+  // const [inputValue, setInputValue] = useState({
+  //   priceFrom: "",
+  //   priceTo: "",
+  // });
 
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.category);
+  // const filterData = useSelector((state) => state.filter);
+  // console.log(filterData);
+
+  const obj = [
+    {
+      link: "/",
+      title: "Main page",
+    },
+    {
+      link: "/categories/all",
+      title: "Categories",
+    },
+    {
+      link: `/categories/${categoryId}`,
+      title: data.category?.title || "",
+    },
+  ];
 
   useEffect(() => {
     dispatch(fetchCategory(categoryId));
   }, [dispatch, categoryId]);
 
+  // useEffect(() => {
+  //   const priceForm = Number(inputValue.priceFrom) || 0;
+  //   const priceTo = Number(inputValue.priceTo) || Infinity;
+  //   dispatch(
+  //     filterPrice({
+  //       data: data.data,
+  //       priceFrom: priceForm,
+  //       priceTo: priceTo,
+  //     })
+  //   );
+  // }, [inputValue, dispatch, data.data]);
+
   if (status === "failed") return <h1>{error}Error</h1>;
   if (status === "loading") return <h1>loading ...</h1>;
 
-  const onChangeInput = (value) => {
-    console.log("changed", value);
-  };
+  // const onChangeInput = (event) => {
+  //   const { name, value } = event.target;
+  //   setInputValue({
+  //     ...inputValue,
+  //     [name]: value,
+  //   });
+  // };
 
-  const onChangeCheckbox = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-  };
+  // const onChangeCheckbox = (e) => {
+  //   dispatch(filterCheckbox(data.data));
+  //   console.log(`checked = ${e.target.checked}`);
+  // };
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
+  // const handleChange = (value) => {
+  //   dispatch(sorterFilter({ data: data.data, value }));
+
+  //   console.log(`selected ${value}`);
+  // };
 
   return (
     status === "succeeded" && (
       <div className={styles.categoryPage_container}>
-        <div className={styles.routes_container}>
-          <p className={styles.main_page_rout}>Main page</p>
-          <hr className={styles.hr} />
-          <p className={styles.categories_page_rout}>Categories</p>
-          <hr className={styles.hr} />
-          <p className={styles.category_page_rout}>{data.category.title}</p>
-        </div>
-        <h1 className={styles.category_title}>{data.category.title}</h1>
+        <RoutsBtn obj={obj} />
+        <CustomHeader title={data.category.title} />
         <div className={styles.filter_container}>
           <div className={styles.price_filter_container}>
             <p className={styles.text}>Price</p>
-            <InputNumber
+            <input
+              type="number"
               placeholder="from"
-              onChange={onChangeInput}
+              // onChange={onChangeInput}
               className={styles.input_Number}
+              name="priceFrom"
+              // value={inputValue.priceFrom}
             />
-            <InputNumber
+            <input
+              type="number"
               placeholder="to"
-              onChange={onChangeInput}
+              // onChange={onChangeInput}
               className={styles.input_Number}
+              name="priceTo"
+              // value={inputValue.priceTo}
             />
           </div>
           <div className={styles.checkbox_container}>
             <div className={styles.text}>Discounted items</div>
             <input
               type="checkbox"
-              onChange={onChangeCheckbox}
+              // onChange={onChangeCheckbox}
               className={styles.input_checkbox}
             />
           </div>
@@ -93,7 +141,7 @@ function CategoryPage() {
             <p className={styles.text}>Sorted</p>
             <Select
               defaultValue="by default"
-              onChange={handleChange}
+              // onChange={handleChange}
               style={{
                 width: "200px",
                 fontWeight: "500",

@@ -7,13 +7,6 @@
   gap: 40px;
 }
 
-.categories_text {
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 110%;
-  color: #282828;
-}
-
 .cards_container {
   display: flex;
   gap: 32px;
