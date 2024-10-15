@@ -1,6 +1,7 @@
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import Card from "../../components/card";
+import RoutsBtn from "../../components/routsBtn";
 
 function CategoriesPage() {
   const { categories, status, error } = useSelector(
@@ -21,19 +22,27 @@ function CategoriesPage() {
   // ● Выполните запрос к маршруту `/categories/all`, чтобы получить список всех
   // категорий.
 
+  const obj = [
+    {
+      link: "/",
+      title: "Main page",
+    },
+    {
+      link: "/categories/all",
+      title: "Categories",
+    },
+  ];
+
   return (
     <div className={styles.categoriesPage_container}>
-      <div className={styles.routes_container}>
-        <p className={styles.main_page_rout}>Main page</p>
-        <hr className={styles.hr} />
-        <p className={styles.categories_page_rout}>Categories</p>
-      </div>
+      <RoutsBtn obj={obj} />
       <h1 className={styles.categories_text}>Categories</h1>
       <div className={styles.cards_container}>
         {status === "succeeded" &&
           categories.map((category) => {
             return (
               <Card
+                key={category.id}
                 id={category.id}
                 image={category.image}
                 title={category.title}

@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
-import { Button } from "antd";
+import { Link } from "react-router-dom";
+import ProductCard from "../productCard";
+import AllShowButton from "../allShowButon";
 
 function DiscountedProducts() {
   const products = useSelector((state) => state.products.products);
@@ -32,44 +33,24 @@ function DiscountedProducts() {
   // перенаправляет на соответствующую страницу товара.
   return (
     <div className={styles.cards_products_sale_container}>
-      <div className={styles.header_container}>
-        <h1 className={styles.header_text}>Sale</h1>
-        <hr className={styles.hr} />
-        <NavLink to="/allSales">
-          <Button className={styles.btn}>All sales</Button>
-        </NavLink>
-      </div>
+      <AllShowButton textTitle="Sale" btnTitle="All sales" link="/allSales" />
       <div className={styles.cards_container}>
         {newArrSales &&
           newArrSales.map((product) => {
-            let sale = Math.floor(
-              ((product.price - product.discont_price) / product.price) * 100
-            );
             return (
               <Link
                 key={product.id}
                 to={`/products/${product.id}`}
                 className={styles.link}
               >
-                <div className={styles.card_container}>
-                  <div className={styles.img_container}>
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className={styles.img}
-                    />
-                    <p className={styles.sale}>-{sale}%</p>
-                  </div>
-                  <div className={styles.text_container}>
-                    <p className={styles.card_title}>{product.title}</p>
-                    <div className={styles.price_container}>
-                      <p className={styles.discont_price}>
-                        {product.discont_price}
-                      </p>
-                      <p className={styles.price}>${product.price}</p>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  price={product.price}
+                  discont_price={product.discont_price}
+                  image={product.image}
+                  title={product.title}
+                />
               </Link>
             );
           })}

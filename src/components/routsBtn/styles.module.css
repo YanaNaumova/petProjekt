@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.routes_container {
+  display: flex;
+  align-items: center;
+}
+
+.hr {
+  width: 16px;
+  color: #dddddd;
+}
+
+.page_rout,
+.last_page_rout {
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 126%;
+  height: 36px;
+  border: 1px solid #8b8b8b;
+  border-radius: 6px;
+}
+
+.page_rout {
+  color: #8b8b8b;
+}
+
+.last_page_rout {
+  color: #282828;
+}
+
+.link {
+  text-decoration: none;
+}

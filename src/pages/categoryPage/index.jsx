@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { fetchCategory } from "../../redux/slices/categorySlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { Select, InputNumber } from "antd";
+import ProductCard from "../../components/productCard";
 
 function CategoryPage() {
   //     Переход на страницу категории при клике на категорию
@@ -42,20 +44,94 @@ function CategoryPage() {
   if (status === "failed") return <h1>{error}Error</h1>;
   if (status === "loading") return <h1>loading ...</h1>;
 
+  const onChangeInput = (value) => {
+    console.log("changed", value);
+  };
+
+  const onChangeCheckbox = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     status === "succeeded" && (
       <div className={styles.categoryPage_container}>
-        <div>{data.category.title}</div>
-        {data.data.map((item) => {
-          return (
-            <div key={item.id}>
-              <img src={item.image} alt={item.title} />
-              <p>{item.title}</p>
-              <p>{item.price}</p>
-              <p>{item.discont_price}</p>
-            </div>
-          );
-        })}
+        <div className={styles.routes_container}>
+          <p className={styles.main_page_rout}>Main page</p>
+          <hr className={styles.hr} />
+          <p className={styles.categories_page_rout}>Categories</p>
+          <hr className={styles.hr} />
+          <p className={styles.category_page_rout}>{data.category.title}</p>
+        </div>
+        <h1 className={styles.category_title}>{data.category.title}</h1>
+        <div className={styles.filter_container}>
+          <div className={styles.price_filter_container}>
+            <p className={styles.text}>Price</p>
+            <InputNumber
+              placeholder="from"
+              onChange={onChangeInput}
+              className={styles.input_Number}
+            />
+            <InputNumber
+              placeholder="to"
+              onChange={onChangeInput}
+              className={styles.input_Number}
+            />
+          </div>
+          <div className={styles.checkbox_container}>
+            <div className={styles.text}>Discounted items</div>
+            <input
+              type="checkbox"
+              onChange={onChangeCheckbox}
+              className={styles.input_checkbox}
+            />
+          </div>
+          <div className={styles.selected_container}>
+            <p className={styles.text}>Sorted</p>
+            <Select
+              defaultValue="by default"
+              onChange={handleChange}
+              style={{
+                width: "200px",
+                fontWeight: "500",
+                height: "36px",
+                lineheight: "126%",
+                color: "#282828",
+              }}
+              options={[
+                {
+                  value: "newest",
+                  label: "newest",
+                },
+                {
+                  value: "price: high-low",
+                  label: "price: high-low",
+                },
+                {
+                  value: "price: low-high",
+                  label: "price: low-high",
+                },
+              ]}
+            />
+          </div>
+        </div>
+        <div className={styles.cards_container}>
+          {data.data.map((item) => {
+            return (
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                price={item.price}
+                discont_price={item.discont_price}
+                image={item.image}
+                title={item.title}
+              />
+            );
+          })}
+        </div>
       </div>
     )
   );

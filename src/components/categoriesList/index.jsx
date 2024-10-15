@@ -1,8 +1,7 @@
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from "./styles.module.css";
-import { Button } from "antd";
 import Card from "../card";
+import AllShowButton from "../allShowButon";
 
 function CategoriesList() {
   const categories = useSelector((state) => state.categories.categories);
@@ -22,18 +21,17 @@ function CategoriesList() {
   // }, []);
   return (
     <div className={styles.cards_categories_container}>
-      <div className={styles.header_container}>
-        <h1 className={styles.header_text}>Categories</h1>
-        <hr className={styles.hr} />
-        <NavLink to="/categories/all">
-          <Button className={styles.btn}>All categories</Button>
-        </NavLink>
-      </div>
+      <AllShowButton
+        textTitle="Categories"
+        btnTitle="All Categories"
+        link="/categories/all"
+      />
       <div className={styles.cards_container}>
         {categories &&
           categories.slice(0, 4).map((category) => {
             return (
               <Card
+                key={category.id}
                 id={category.id}
                 image={category.image}
                 title={category.title}

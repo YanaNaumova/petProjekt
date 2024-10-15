@@ -1,0 +1,34 @@
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_text {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 110%;
+  color: #282828;
+}
+
+.hr {
+  width: 100%;
+  color: #dddddd;
+  margin-left: 32px;
+  margin-top: 22px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  padding: 8px 16px;
+  color: #8b8b8b;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 126%;
+  border: 1px solid #dddddd;
+  max-width: 142px;
+  width: 100%;
+  height: 36px;
+  margin-top: 22px;
+  margin-bottom: 12px;
+}
