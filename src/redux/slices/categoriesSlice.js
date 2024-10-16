@@ -19,7 +19,7 @@ const categoreiesSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducer: {},
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {

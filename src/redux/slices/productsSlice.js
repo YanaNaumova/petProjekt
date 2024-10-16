@@ -19,7 +19,7 @@ const productsSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducer: {},
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {

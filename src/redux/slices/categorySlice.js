@@ -21,7 +21,7 @@ const categorySlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducer: {},
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategory.pending, (state) => {
