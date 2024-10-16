@@ -4,6 +4,8 @@ import category from "../redux/slices/categorySlice";
 import products from "../redux/slices/productsSlice";
 import product from "../redux/slices/productSlice";
 import filter from "../redux/slices/filterSlice";
+import counter from "../redux/slices/counterSlice";
+import cart from "../redux/slices/cartSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     products,
     product,
     filter,
+    counter,
+    cart,
   },
 });
 

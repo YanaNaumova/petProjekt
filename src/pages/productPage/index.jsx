@@ -4,15 +4,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProduct } from "../../redux/slices/productSlice";
 import { fetchCategory } from "../../redux/slices/categorySlice";
+
 import RoutsBtn from "../../components/routsBtn";
 import { useState } from "react";
 import { Button } from "antd";
 import Minus from "../../assets/icons/minus.svg";
 import Plus from "../../assets/icons/plus.svg";
+import {
+  addProductToCart,
+  removeProductFromCart,
+  increaseProductCount,
+  decreaseProductCount,
+} from "../../redux/slices/cartSlice";
 
 function ProductPage() {
   const { productId } = useParams();
   const [isShow, setIshow] = useState(false);
+  const [count, setCount] = useState(0);
   // axios.get(`http://localhost:3333/products/${productId}`)
   //     Переход на страницу продукта при клике на карточку товара
   // Используйте `react-router-dom` для настройки маршрутов. Добавьте маршрут для
@@ -40,11 +48,14 @@ function ProductPage() {
   // соответствующее действие, которое добавляет продукт в корзину.
   const dispatch = useDispatch();
   const { product, status, error } = useSelector((state) => state.product);
+
   const {
     data: categoryData,
     status: categoryStatus,
     error: categoryError,
   } = useSelector((state) => state.category);
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
 
   let title = product.length > 0 ? product[0].title : "";
   const obj = [
@@ -79,6 +90,26 @@ function ProductPage() {
     }
   }, [status, categoryStatus, product, dispatch]);
 
+  function plusOneProduct() {
+    setCount(count + 1);
+  }
+
+  function minusOneProduct() {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  }
+
+  function addToCart() {
+    const selectedProduct = product[0];
+    dispatch(
+      addProductToCart({
+        product: selectedProduct,
+        count: count,
+      })
+    );
+  }
+
   if (status === "failed") return <h1>{error}Error</h1>;
   if (status === "loading") return <h1>loading ...</h1>;
 
@@ -100,10 +131,10 @@ function ProductPage() {
                 <p className={styles.header}>{element.title}</p>
                 {element.discont_price ? (
                   <div className={styles.price_container}>
-                    <p className={styles.price}>${element.price}</p>
                     <p className={styles.discount_price}>
                       ${element.discont_price}
                     </p>
+                    <p className={styles.price}>${element.price}</p>
                     <div className={styles.badge}>sale</div>
                   </div>
                 ) : (
@@ -113,19 +144,25 @@ function ProductPage() {
                 )}
                 <div className={styles.btn_container}>
                   <div className={styles.counter_container}>
-                    <div className={styles.minus_btn}>
+                    <div className={styles.minus_btn} onClick={minusOneProduct}>
                       <img
                         src={Minus}
                         alt="minus"
                         className={styles.minus_icon}
                       />
                     </div>
-                    <div className={styles.count_number}>1</div>
-                    <div className={styles.plus_btn}>
+                    <div className={styles.count_number}>
+                      {count !== 0 ? count : 1}
+                    </div>
+                    <div className={styles.plus_btn} onClick={plusOneProduct}>
                       <img src={Plus} alt="plus" className={styles.plus_icon} />
                     </div>
                   </div>
-                  <Button type="primary" className={styles.addToCart}>
+                  <Button
+                    type="primary"
+                    className={styles.addToCart}
+                    onClick={addToCart}
+                  >
                     Add to cart
                   </Button>
                 </div>

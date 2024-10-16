@@ -2,6 +2,7 @@ import Logo from "../../assets/icons/logo.svg";
 import EmptyBasket from "../../assets/icons/basketEmpty.svg";
 import { NavLink } from "react-router-dom";
 import styles from "./styles.module.css";
+import { useSelector } from "react-redux";
 
 function Header() {
   //   1. Логотип
@@ -17,6 +18,8 @@ function Header() {
   // ● Иконка корзины должна вести на страницу корзины.
   // ● Нужно также добавить индикатор количества товаров в корзине рядом с
   // иконкой корзины.
+  const count = useSelector((state) => state.counter.counter);
+  console.log(count);
   return (
     <header className={styles.container}>
       <NavLink to="/">
@@ -36,12 +39,13 @@ function Header() {
           All sales
         </NavLink>
       </nav>
-      <NavLink to="/cartPage">
+      <NavLink to="/cartPage" className={styles.navlink_basket}>
         <img
           src={EmptyBasket}
           alt="empty Basket"
           className={styles.empty_basket}
         />
+        {count !== 0 && <div className={styles.badge}>{count}</div>}
       </NavLink>
     </header>
   );

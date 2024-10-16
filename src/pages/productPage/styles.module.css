@@ -40,14 +40,14 @@
   color: #282828;
 }
 
-.price {
+.discount_price {
   font-weight: 700;
   font-size: 64px;
   line-height: 110%;
   color: #282828;
 }
 
-.discount_price {
+.price {
   font-weight: 500;
   font-size: 40px;
   line-height: 130%;
