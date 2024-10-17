@@ -60,10 +60,14 @@ function FirstOrderDiscount() {
             {formInfo.map((item, index) => {
               return (
                 <UIInput
+                  className={styles.input}
                   register={register}
                   errors={errors}
                   {...item}
                   key={index}
+                  bgColor="#0a40bb"
+                  placeholder={item.placeholder}
+                  placeholderColor="white"
                 />
               );
             })}

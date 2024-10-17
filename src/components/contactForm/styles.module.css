@@ -1,0 +1,88 @@
+.order_details_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 32px 32px 32px 32px;
+  border-radius: 12px;
+  background-color: #f1f3f4;
+  max-width: 548px;
+  width: 100%;
+  gap: 32px;
+}
+
+.order_description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order_title {
+  color: #282828;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: 40px;
+}
+
+.items_text {
+  color: #8b8b8b;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: 40px;
+}
+
+.total_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  color: #8b8b8b;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: 40px;
+}
+
+.total_price {
+  color: #282828;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: 64px;
+}
+
+.order_form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  padding: 16px 32px;
+  border: none;
+}
+
+.submit_btn {
+  padding: 16px 32px;
+  border: none;
+  background-color: #0d50ff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 130%;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.notification_message {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 110%;
+}
+
+.notification_description {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 110%;
+}

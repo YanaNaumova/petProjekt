@@ -9,6 +9,7 @@
   border: 1px solid #dddddd;
   border-radius: 12px;
   justify-content: space-between;
+  position: relative;
 }
 
 .img_container {
@@ -82,4 +83,16 @@
   width: 100%;
   height: 100%;
   border-radius: 6px;
+}
+
+.btn {
+  position: absolute;
+  bottom: 124px;
+  width: 100%;
+  height: 58px;
+  display: none;
+}
+
+.card_container:hover .btn {
+  display: block;
 }

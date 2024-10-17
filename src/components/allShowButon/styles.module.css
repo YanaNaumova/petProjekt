@@ -9,6 +9,7 @@
   font-size: 64px;
   line-height: 110%;
   color: #282828;
+  white-space: nowrap;
 }
 
 .hr {

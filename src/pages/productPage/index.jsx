@@ -8,19 +8,13 @@ import { fetchCategory } from "../../redux/slices/categorySlice";
 import RoutsBtn from "../../components/routsBtn";
 import { useState } from "react";
 import { Button } from "antd";
-import Minus from "../../assets/icons/minus.svg";
-import Plus from "../../assets/icons/plus.svg";
-import {
-  addProductToCart,
-  removeProductFromCart,
-  increaseProductCount,
-  decreaseProductCount,
-} from "../../redux/slices/cartSlice";
+import { addProductToCart } from "../../redux/slices/cartSlice";
+import CounterBtn from "../../components/counterBtn";
 
 function ProductPage() {
   const { productId } = useParams();
   const [isShow, setIshow] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   // axios.get(`http://localhost:3333/products/${productId}`)
   //     Переход на страницу продукта при клике на карточку товара
   // Используйте `react-router-dom` для настройки маршрутов. Добавьте маршрут для
@@ -54,8 +48,6 @@ function ProductPage() {
     status: categoryStatus,
     error: categoryError,
   } = useSelector((state) => state.category);
-  const cart = useSelector((state) => state.cart.cart);
-  console.log(cart);
 
   let title = product.length > 0 ? product[0].title : "";
   const obj = [
@@ -102,10 +94,11 @@ function ProductPage() {
 
   function addToCart() {
     const selectedProduct = product[0];
+    const finalCount = count < 1 ? 1 : count;
     dispatch(
       addProductToCart({
         product: selectedProduct,
-        count: count,
+        count: finalCount,
       })
     );
   }
@@ -143,21 +136,11 @@ function ProductPage() {
                   </div>
                 )}
                 <div className={styles.btn_container}>
-                  <div className={styles.counter_container}>
-                    <div className={styles.minus_btn} onClick={minusOneProduct}>
-                      <img
-                        src={Minus}
-                        alt="minus"
-                        className={styles.minus_icon}
-                      />
-                    </div>
-                    <div className={styles.count_number}>
-                      {count !== 0 ? count : 1}
-                    </div>
-                    <div className={styles.plus_btn} onClick={plusOneProduct}>
-                      <img src={Plus} alt="plus" className={styles.plus_icon} />
-                    </div>
-                  </div>
+                  <CounterBtn
+                    minusOneProduct={minusOneProduct}
+                    count={count}
+                    plusOneProduct={plusOneProduct}
+                  />
                   <Button
                     type="primary"
                     className={styles.addToCart}

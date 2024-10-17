@@ -1,6 +1,23 @@
+import { Button } from "antd";
 import styles from "./styles.module.css";
+import { addProductToCart } from "../../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductCard({ id, price, discont_price, image, title }) {
+  const products = useSelector((state) => state.products.products);
+  const product = products.find((product) => product.id === id);
+  const dispatch = useDispatch();
+
+  // function addProduct(e) {
+  //   e.stopPropagation();
+  //   dispatch(
+  //     addProductToCart({
+  //       product: product,
+  //       count: 1,
+  //     })
+  //   );
+  // }
+
   let sale = Math.floor(((price - discont_price) / price) * 100);
   return sale !== 100 ? (
     <div key={id} className={styles.card_container}>
@@ -15,6 +32,9 @@ function ProductCard({ id, price, discont_price, image, title }) {
           <p className={styles.price}>${price}</p>
         </div>
       </div>
+      <Button className={styles.btn} type="primary">
+        Add to cart
+      </Button>
     </div>
   ) : (
     <div key={id} className={styles.card_container}>
@@ -27,6 +47,9 @@ function ProductCard({ id, price, discont_price, image, title }) {
           <p className={styles.price_without_price}>${price}</p>
         </div>
       </div>
+      <Button className={styles.btn} type="primary">
+        Add to cart
+      </Button>
     </div>
   );
 }
