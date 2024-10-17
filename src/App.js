@@ -16,67 +16,6 @@ import ProductPage from "./pages/productPage";
 import Error404Page from "./pages/error404Page";
 
 function App() {
-  // Получение всех категорий: `/categories/all
-  // axios.get("http://localhost:3333/categories/all").then((response) => {
-  //   this.SetState({
-  //     categories: response.data,
-  //   }).catch((error) => {
-  //     console.error("There was an error fetching categories", error);
-  //   });
-  // });
-
-  // Получение продуктов по категории: `/categories/:id
-  //   Этот маршрут возвращает список продуктов, принадлежащих к определенной
-  // категории. Параметр `:id` - это идентификатор категории.
-  // axios
-  //   .get(`http://localhost:3333/categories/${categoryId}`)
-  //   .then((response) => {
-  //     this.SetState({
-  //       products: response.data,
-  //     }).catch((error) => {
-  //       console.error("There was an error fetching products", error);
-  //     });
-  //   });
-  // Получение всех продуктов**: `/products/all`
-  // Этот маршрут возвращает список всех продуктов. Мы можем использовать его для
-  // отображения всех продуктов на странице "Все продукты".
-
-  // axios.get("http://localhost:3333/products/all").then((response) => {
-  //   this.SetState({
-  //     products: response.data,
-  //   }).catch((error) => {
-  //     console.error("There was an error fetching products", error);
-  //   });
-  // });
-
-  // Получение продукта по ID: `/products/:id`
-  //   Этот маршрут возвращает информацию о продукте по его идентификатору.
-  // Параметр `:id` - это идентификатор продукта.
-  // axios.get(`http://localhost:3333/products/${productId}`).then((response) => {
-  //   this.SetState({
-  //     product: response.data,
-  //   }).catch((error) => {
-  //     console.error("There was an error fetching product", error);
-  //   });
-  // });
-
-  //   5. Оформление заказа: `/order/send`
-  // Этот маршрут используется для оформления заказа. Мы будем отправлять POST
-  // запрос с данными заказа (имя, номер телефона, электронная почта и товары)
-  // axios
-  //   .post(`http://localhost:3333/order/send`, {
-  //     name: this.state.name,
-  //     phone: this.state.phone,
-  //     email: this.state.email,
-  //     products: this.state.cartProducts,
-  //   })
-  //   .then((response) => {
-  //     alert("Order successfully placed");
-  //   })
-  //   .catch((error) => {
-  //     console.error("There was an error placing the order", error);
-  //   });
-
   const dispatch = useDispatch();
 
   useEffect(() => {

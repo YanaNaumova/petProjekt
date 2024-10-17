@@ -15,11 +15,6 @@ import {
 import { useLocation } from "react-router-dom";
 
 function DiscountedItemsPage() {
-  //     То же самое, что и страница определенной категории товаров, но здесь только
-  // товары со скидкой.
-  // ● В левом верхнем углу маршрут пользователя.
-  // ● Товары можно отсортировать.
-  // ● Карточки товаров с возможностью добавления товара в корзину.
   const { discountedProducts, status, error } = useSelector(
     (state) => state.products
   );

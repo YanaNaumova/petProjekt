@@ -23,14 +23,6 @@ function FirstOrderDiscount() {
     (state) => state.getDiscount.isDiscountRequestSent
   );
 
-  //     Эта секция содержит информацию о возможности получить скидку в размере 5% на
-  // первый заказ, так же содержит форму для получения скидки. Для ее реализации
-  // потребуется:
-  // ● Форма с тремя полями: имя, номер телефона, почта.
-  // ● Кнопка получить скидку.
-  // ● По нажатии на кнопку должен отправляться запрос на backend (Оформление
-  // заявки на купон: POST /sale/send)
-
   async function sendSaleData(saleData) {
     try {
       const response = await axios.post(

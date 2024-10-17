@@ -15,12 +15,6 @@ import {
 import { useLocation } from "react-router-dom";
 
 function ProductsPage() {
-  //     То же самое, что и страница определенной категории товаров, но здесь все товары
-  // вперемешку.
-  // ● В левом верхнем углу маршрут пользователя.
-  // ● Товары можно отсортировать.
-  // ● Карточки товаров с возможностью добавления товара в корзину.
-  // ● Если на товар действует скидка, это отображается на карточке.
   const { products, status, error } = useSelector((state) => state.products);
   const [inputValue, setInputValue] = useState({
     priceFrom: "",

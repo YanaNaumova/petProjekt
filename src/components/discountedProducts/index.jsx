@@ -1,6 +1,5 @@
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import ProductCard from "../productCard";
 import AllShowButton from "../allShowButon";
 
@@ -21,16 +20,6 @@ function DiscountedProducts() {
     }
   }
 
-  //     Эта секция отображает четыре случайных товаров со скидкой. Для ее реализации
-  // потребуется:
-  // ● Компонент будет получать данные о товарах (названия, изображения и
-  // ссылки) через props или из глобального состояния (например, Redux).
-  // ● Для каждого товара отрисовывать карточку с изображением, названием и
-  // ценой, в правом верхнем углу скидка.
-  // ● В правом верхнем углу кнопка, перенаправляющая на страницу со всеми
-  // скидками.
-  // ● Каждая карточка должна быть обернута в компонент `Link`, который
-  // перенаправляет на соответствующую страницу товара.
   return (
     <div className={styles.cards_products_sale_container}>
       <AllShowButton textTitle="Sale" btnTitle="All sales" link="/allSales" />

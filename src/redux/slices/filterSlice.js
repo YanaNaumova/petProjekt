@@ -29,7 +29,6 @@ const filterSlice = createSlice({
     },
     applyFilters: (state, action) => {
       const { data } = action.payload;
-      console.log("Raw Data:", data);
 
       let filteredData = data.filter((item) => {
         const itemPrice = item.discont_price || item.price;
@@ -41,8 +40,6 @@ const filterSlice = createSlice({
           (item) => item.discont_price !== null
         );
       }
-
-      console.log("Filtered Data:", filteredData);
 
       switch (state.sortBy) {
         case "newest":
