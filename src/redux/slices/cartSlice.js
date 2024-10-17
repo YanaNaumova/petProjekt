@@ -4,6 +4,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cart: [],
+    addedProductIds: [],
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -16,6 +17,7 @@ const cartSlice = createSlice({
         existingProduct.count += count;
       } else {
         state.cart.push({ product, count });
+        state.addedProductIds.push(product.id);
       }
     },
     removeProductFromCart: (state, action) => {

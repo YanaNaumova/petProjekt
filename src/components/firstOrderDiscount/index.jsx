@@ -4,14 +4,25 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import formInfo from "../../utils/validations";
 import UIInput from "../uIInput";
+import { getDiscountRequestSent } from "../../redux/slices/getDiscountSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function FirstOrderDiscount() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
   } = useForm({ mode: "all" });
+
+  const btnTitle = "Get a discount";
+  const sentBtnTitle = "Request Submitted";
+
+  const dispatch = useDispatch();
+  const isDiscountRequest = useSelector(
+    (state) => state.getDiscount.isDiscountRequestSent
+  );
+
   //     Эта секция содержит информацию о возможности получить скидку в размере 5% на
   // первый заказ, так же содержит форму для получения скидки. Для ее реализации
   // потребуется:
@@ -45,6 +56,9 @@ function FirstOrderDiscount() {
     };
     sendSaleData(saleData);
     reset();
+    if (isValid) {
+      dispatch(getDiscountRequestSent());
+    }
   }
 
   return (
@@ -73,8 +87,8 @@ function FirstOrderDiscount() {
             })}
             <input
               type="submit"
-              value="Get a discount"
-              className={styles.btn}
+              value={isDiscountRequest ? sentBtnTitle : btnTitle}
+              className={isDiscountRequest ? styles.btn_sent : styles.btn}
             />
           </form>
         </div>

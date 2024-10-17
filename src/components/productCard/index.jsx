@@ -1,20 +1,27 @@
-import { Button } from "antd";
 import styles from "./styles.module.css";
 import { addProductToCart } from "../../redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function ProductCard({ id, price, discont_price, image, title }) {
   const products = useSelector((state) => state.products.products);
   const product = products.find((product) => product.id === id);
   const cart = useSelector((state) => state.cart.cart);
+  const addedProductIds = useSelector((state) => state.cart.addedProductIds);
   const dispatch = useDispatch();
+  const [btnTitle, setBtnTitle] = useState("Add to cart");
+
+  const isAdded = addedProductIds.includes(id);
 
   function addProduct(e) {
-    e.preventDefault();
-    const existingProduct = cart.find((item) => item.id === id);
-    const newCount = existingProduct ? existingProduct.count + 1 : 1;
-    dispatch(addProductToCart({ product: product, count: newCount }));
+    if (!isAdded) {
+      e.preventDefault();
+      const existingProduct = cart.find((item) => item.id === id);
+      const newCount = existingProduct ? existingProduct.count + 1 : 1;
+      dispatch(addProductToCart({ product: product, count: newCount }));
+      setBtnTitle("Added");
+    }
   }
 
   let sale = Math.floor(((price - discont_price) / price) * 100);
@@ -32,9 +39,12 @@ function ProductCard({ id, price, discont_price, image, title }) {
             <p className={styles.price}>${price}</p>
           </div>
         </div>
-        <Button className={styles.btn} type="primary" onClick={addProduct}>
-          Add to cart
-        </Button>
+        <button
+          className={isAdded ? styles.btn_add : styles.btn}
+          onClick={addProduct}
+        >
+          {isAdded ? "Added" : btnTitle}
+        </button>
       </div>
     </Link>
   ) : (
@@ -49,9 +59,12 @@ function ProductCard({ id, price, discont_price, image, title }) {
             <p className={styles.price_without_price}>${price}</p>
           </div>
         </div>
-        <Button className={styles.btn} type="primary" onClick={addProduct}>
-          Add to cart
-        </Button>
+        <button
+          className={isAdded ? styles.btn_add : styles.btn}
+          onClick={addProduct}
+        >
+          {isAdded ? "Added" : btnTitle}
+        </button>
       </div>
     </Link>
   );

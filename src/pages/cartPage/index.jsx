@@ -45,7 +45,7 @@ function CartPage() {
       <AllShowButton
         textTitle="Shopping cart"
         btnTitle="Back to the store"
-        link="/allProducts"
+        link="/products/all"
       />
 
       <div className={styles.cart_container}>

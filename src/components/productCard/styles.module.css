@@ -93,18 +93,47 @@
   width: 100%;
   max-width: 284px;
   height: 58px;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
   background-color: #0d50ff;
   font-weight: 600;
   font-size: 20px;
   color: #ffffff;
   z-index: 10;
+  border-radius: 6px;
+  border: none;
 }
 
 .card_container:hover .btn {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .link {
   text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #282828;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.btn_add {
+  position: absolute;
+  bottom: 154px;
+  width: 100%;
+  max-width: 284px;
+  height: 58px;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s;
+  color: #282828;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: #ffffff;
+  z-index: 10;
+  border-radius: 6px;
+  border: 1px solid #282828;
 }

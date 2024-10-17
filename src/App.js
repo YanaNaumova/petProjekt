@@ -90,7 +90,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/categories/all" element={<CategoriesPage />} />
-        <Route path="/allProducts" element={<ProductsPage />} />
+        <Route path="/products/all" element={<ProductsPage />} />
         <Route path="/allSales" element={<DiscountedItemsPage />} />
         <Route path="/cartPage" element={<CartPage />} />
         <Route path="/categories/:categoryId" element={<CategoryPage />} />

@@ -53,6 +53,34 @@
   border: none;
 }
 
+.btn_sent {
+  max-width: 516px;
+  width: 100%;
+  color: #0d50ff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  background-color: #f1f3f4;
+  padding: 16px 32px;
+  margin-top: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn:hover {
+  max-width: 516px;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  background-color: #282828;
+  padding: 16px 32px;
+  margin-top: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
 .header {
   font-weight: 700;
   font-size: 64px;
