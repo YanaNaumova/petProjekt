@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -45,6 +45,64 @@
   line-height: 80%;
   width: 26px;
   height: 26px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(20px + (30 - 20) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (39 - 20) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (28 - 20) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  border-bottom: 1px solid #dddddd;
+}
+
+.nav_container {
+  display: flex;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.navlink {
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
+  color: #282828;
+  line-height: 130%;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navlink_basket {
+  text-decoration: none;
+  position: relative;
+}
+
+.logo {
+  max-width: calc(35px + (70 - 35) * ((100vw - 393px) / (1440 - 393)));
+  height: calc(35px + (70 - 35) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+}
+
+.empty_basket {
+  max-width: calc(24px + (48 - 24) * ((100vw - 393px) / (1440 - 393)));
+  height: calc(24px + (48 - 24) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+}
+
+.badge {
+  position: absolute;
+  top: calc(4px + (8 - 4) * ((100vw - 393px) / (1440 - 393)));
+  background-color: #0d50ff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: calc(8px + (12 - 8) * ((100vw - 393px) / (1440 - 393)));
+  line-height: 80%;
+  width: calc(20px + (26 - 20) * ((100vw - 393px) / (1440 - 393)));
+  height: calc(20px + (26 - 20) * ((100vw - 393px) / (1440 - 393)));
   border-radius: 50%;
   display: flex;
   justify-content: center;

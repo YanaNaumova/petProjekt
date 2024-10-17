@@ -1,4 +1,4 @@
-.cards_products_sale_container {
+/* .cards_products_sale_container {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -8,6 +8,22 @@
 .cards_container {
   display: flex;
   gap: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+} */
+
+.cards_products_sale_container {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  padding: calc(0px + (40px - 0px) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.cards_container {
+  display: flex;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;

@@ -1,4 +1,4 @@
-.container {
+/* .container {
   max-height: 600px;
   height: 100%;
   width: 100%;
@@ -22,6 +22,37 @@
   padding: 0;
   font-weight: 600;
   font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+} */
+
+.container {
+  max-height: calc(300px + (600 - 300) * ((100vw - 393px) / (1440 - 393)));
+  height: 100%;
+  width: 100%;
+  padding: calc(40px + (80 - 40) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)))
+    calc(105px + (210 - 105) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.header {
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: calc(48px + (96 - 48) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.btn {
+  max-width: calc(109px + (218 - 109) * ((100vw - 393px) / (1440 - 393)));
+  height: calc(29px + (58 - 29) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+  padding: 0;
+  font-weight: 600;
+  font-size: calc(10px + (20 - 10) * ((100vw - 393px) / (1440 - 393)));
   line-height: 130%;
   color: #ffffff;
 }

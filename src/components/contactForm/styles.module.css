@@ -1,4 +1,4 @@
-.order_details_container {
+/* .order_details_container {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -83,6 +83,100 @@
 .notification_description {
   color: #ffffff;
   font-size: 20px;
+  font-weight: 600;
+  line-height: 110%;
+} */
+
+.order_details_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  border-radius: 12px;
+  background-color: #f1f3f4;
+  max-width: 548px;
+  width: 100%;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.order_description {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10px + (20 - 10) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.order_title {
+  color: #282828;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.items_text {
+  color: #8b8b8b;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.total_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  color: #8b8b8b;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.total_price {
+  color: #282828;
+  font-weight: 700;
+  line-height: 110%;
+  font-size: calc(32px + (64 - 32) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.order_form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.input {
+  padding: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  border: none;
+}
+
+.submit_btn {
+  padding: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  border: none;
+  background-color: #0d50ff;
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
+  font-weight: 600;
+  line-height: 130%;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.notification_message {
+  color: #ffffff;
+  font-size: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  font-weight: 600;
+  line-height: 110%;
+}
+
+.notification_description {
+  color: #ffffff;
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
   font-weight: 600;
   line-height: 110%;
 }

@@ -1,6 +1,13 @@
-.text {
+/* .text {
   font-weight: 700;
   font-size: 64px;
   line-height: 110%;
+  color: #282828;
+} */
+
+.text {
+  font-weight: 700;
+  font-size: calc(32px + (64 - 32) * ((100vw - 393px) / (1440 - 393)));
+  line-height: calc(110% + (130% - 110%) * ((100vw - 393px) / (1440 - 393)));
   color: #282828;
 }

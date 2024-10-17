@@ -1,4 +1,4 @@
-.error404Page_container {
+/* .error404Page_container {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,71 @@
 
 .text {
   font-size: 20px;
+  font-weight: 500;
+  line-height: 130%;
+  color: #8b8b8b;
+  text-align: center;
+}
+
+.link {
+  width: 100%;
+  text-align: center;
+} */
+
+.error404Page_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393))) 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.image_4 {
+  max-width: calc(120px + (179 - 120) * ((100vw - 393px) / (1440 - 393)));
+  max-height: calc(160px + (246 - 160) * ((100vw - 393px) / (1440 - 393)));
+  height: 100%;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.image_dog {
+  max-width: calc(180px + (270 - 180) * ((100vw - 393px) / (1440 - 393)));
+  max-height: calc(200px + (300 - 200) * ((100vw - 393px) / (1440 - 393)));
+  height: 100%;
+  width: 100%;
+}
+
+.img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+  max-width: calc(300px + (664 - 300) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+}
+
+.btn {
+  margin-top: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+  max-width: calc(160px + (209 - 160) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+  height: calc(48px + (58 - 48) * ((100vw - 393px) / (1440 - 393)));
+  font-weight: 600;
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
+  line-height: 130%;
+}
+
+.text {
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
   font-weight: 500;
   line-height: 130%;
   color: #8b8b8b;

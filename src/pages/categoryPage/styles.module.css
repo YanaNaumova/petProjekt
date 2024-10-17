@@ -1,4 +1,4 @@
-.categoryPage_container {
+/* .categoryPage_container {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,23 @@
 .cards_container {
   display: flex;
   gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+} */
+
+.categoryPage_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  padding: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393))) 0; /* Верхний, правый, нижний отступ, левый отступ */
+  width: 100%;
+}
+
+.cards_container {
+  display: flex;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
   align-items: center;
   flex-wrap: wrap;
 }

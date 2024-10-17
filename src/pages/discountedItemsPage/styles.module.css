@@ -1,4 +1,4 @@
-.discountedItemsPage_container {
+/* .discountedItemsPage_container {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,4 +12,22 @@
   gap: 32px;
   align-items: center;
   flex-wrap: wrap;
+} */
+
+.discountedItemsPage_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  padding: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393))) 40px;
+  width: 100%;
+}
+
+.cards_container {
+  display: flex;
+  justify-content: center;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }

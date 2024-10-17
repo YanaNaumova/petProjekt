@@ -1,4 +1,4 @@
-.error {
+/* .error {
   padding-top: 5px;
   color: red;
   font-size: 12px;
@@ -18,8 +18,32 @@
 }
 
 .input::placeholder {
-  /* color: #ffffff; */
   font-weight: 500;
   font-size: 20px;
+  line-height: 130%;
+} */
+.error {
+  padding-top: calc(2px + (5 - 2) * ((100vw - 393px) / (1440 - 393)));
+  color: red;
+  font-size: calc(6px + (12 - 6) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.input_container {
+  width: 100%;
+}
+
+.input {
+  max-width: 516px;
+  width: 100%;
+  padding: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  background: #0a40bb;
+  border: 1px solid #ffffff;
+  border-radius: calc(3px + (6 - 3) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.input::placeholder {
+  font-weight: 500;
+  font-size: calc(10px + (20 - 10) * ((100vw - 393px) / (1440 - 393)));
   line-height: 130%;
 }

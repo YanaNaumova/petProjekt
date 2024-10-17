@@ -1,4 +1,4 @@
-.container_firstOrder {
+/* .container_firstOrder {
   background: linear-gradient(90deg, #0d50ff 0%, #0a3daf 100%);
   width: 100%;
   border-radius: 12px;
@@ -84,6 +84,86 @@
 .header {
   font-weight: 700;
   font-size: 64px;
+  color: #ffffff;
+  line-height: 110%;
+} */
+
+.container_firstOrder {
+  background: linear-gradient(90deg, #0d50ff 0%, #0a3daf 100%);
+  width: 100%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: calc(12px + (24 - 12) * ((100vw - 393px) / (1440 - 393)));
+  padding: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393))) 0
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 0 0 calc(40px + (80 - 40) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.info_container {
+  display: flex;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+  max-width: 516px;
+  width: 100%;
+}
+
+.img {
+  max-width: 783px;
+  width: 100%;
+  height: calc(180px + (360 - 180) * ((100vw - 393px) / (1440 - 393)));
+  object-fit: cover;
+}
+
+.btn,
+.btn_sent {
+  max-width: 516px;
+  width: 100%;
+  font-weight: 600;
+  font-size: calc(16px + (20 - 16) * ((100vw - 393px) / (1440 - 393)));
+  line-height: 130%;
+  padding: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)))
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  margin-top: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+  border-radius: 6px;
+  border: none;
+}
+
+.btn {
+  color: #282828;
+  background-color: #ffffff;
+}
+
+.btn_sent {
+  color: #0d50ff;
+  background-color: #f1f3f4;
+}
+
+.btn:hover {
+  color: #ffffff;
+  background-color: #282828;
+}
+
+.header {
+  font-weight: 700;
+  font-size: calc(32px + (64 - 32) * ((100vw - 393px) / (1440 - 393)));
   color: #ffffff;
   line-height: 110%;
 }

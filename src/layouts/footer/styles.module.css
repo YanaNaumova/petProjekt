@@ -1,4 +1,4 @@
-.footer_container {
+/* .footer_container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -90,5 +90,95 @@
   font-weight: 700;
   font-size: 64px;
   line-height: 110px;
+  color: #282828;
+} */
+
+.footer_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: calc(40px + (80 - 40) * ((100vw - 393px) / (1440 - 393)))
+    calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.info_container {
+  display: flex;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  width: 100%;
+  align-items: stretch;
+  padding: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393))) 0
+    calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393))) 0;
+}
+
+.contact_info,
+.sozial_netvork_oppening_hours {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+  justify-content: center;
+}
+
+.phone_info,
+.adresse_info,
+.sozial_network,
+.oppening_hours {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+  background-color: #f1f3f4;
+  padding: calc(16px + (32 - 16) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.phone_info p,
+.adresse_info p,
+.sozial_network p,
+.oppening_hours p {
+  font-weight: 500;
+  line-height: 130%;
+  color: #8b8b8b;
+  font-size: calc(10px + (20 - 10) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.phone_info h3,
+.adresse_info h3,
+.sozial_network h3,
+.oppening_hours h3 {
+  line-height: 110%;
+  color: #282828;
+  font-size: calc(20px + (40 - 20) * ((100vw - 393px) / (1440 - 393)));
+  font-weight: 700;
+}
+
+.sozial_network_container img {
+  width: calc(21.5px + (43 - 21.5) * ((100vw - 393px) / (1440 - 393)));
+  height: calc(21.5px + (43 - 21.5) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.sozial_network_container {
+  display: flex;
+  gap: calc(8px + (16 - 8) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.phone_info,
+.sozial_network {
+  height: calc(75px + (150 - 75) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.adresse_info,
+.oppening_hours {
+  height: calc(97px + (194 - 97) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.map {
+  max-width: 1360px;
+  width: 100%;
+  height: calc(175px + (350 - 175) * ((100vw - 393px) / (1440 - 393)));
+}
+
+.contact_header {
+  font-weight: 700;
+  font-size: calc(32px + (64 - 32) * ((100vw - 393px) / (1440 - 393)));
+  line-height: calc(55px + (110 - 55) * ((100vw - 393px) / (1440 - 393)));
   color: #282828;
 }
