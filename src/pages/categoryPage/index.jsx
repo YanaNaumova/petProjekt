@@ -7,9 +7,10 @@ import { Select } from "antd";
 import ProductCard from "../../components/productCard";
 import RoutsBtn from "../../components/routsBtn";
 import {
-  filterPrice,
-  sorterFilter,
-  filterCheckbox,
+  setPriceFilter,
+  toggleCheckbox,
+  setSortBy,
+  applyFilters,
 } from "../../redux/slices/filterSlice";
 import CustomHeader from "../../components/customHeader";
 
@@ -41,15 +42,14 @@ function CategoryPage() {
   // ● Товары можно отфильтровать по новизне, цене.
 
   const { categoryId } = useParams();
-  // const [inputValue, setInputValue] = useState({
-  //   priceFrom: "",
-  //   priceTo: "",
-  // });
+  const [inputValue, setInputValue] = useState({
+    priceFrom: "",
+    priceTo: "",
+  });
 
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.category);
-  // const filterData = useSelector((state) => state.filter);
-  // console.log(filterData);
+  const filterData = useSelector((state) => state.filter);
 
   const obj = [
     {
@@ -70,39 +70,41 @@ function CategoryPage() {
     dispatch(fetchCategory(categoryId));
   }, [dispatch, categoryId]);
 
-  // useEffect(() => {
-  //   const priceForm = Number(inputValue.priceFrom) || 0;
-  //   const priceTo = Number(inputValue.priceTo) || Infinity;
-  //   dispatch(
-  //     filterPrice({
-  //       data: data.data,
-  //       priceFrom: priceForm,
-  //       priceTo: priceTo,
-  //     })
-  //   );
-  // }, [inputValue, dispatch, data.data]);
+  useEffect(() => {
+    const priceFrom = Number(inputValue.priceFrom) || 0;
+    const priceTo = Number(inputValue.priceTo) || Infinity;
+
+    dispatch(setPriceFilter({ priceFrom, priceTo }));
+
+    dispatch(applyFilters({ data: data.data }));
+  }, [
+    inputValue,
+    filterData.sortBy,
+    filterData.isChecked,
+    data.data,
+    dispatch,
+  ]);
 
   if (status === "failed") return <h1>{error}Error</h1>;
   if (status === "loading") return <h1>loading ...</h1>;
 
-  // const onChangeInput = (event) => {
-  //   const { name, value } = event.target;
-  //   setInputValue({
-  //     ...inputValue,
-  //     [name]: value,
-  //   });
-  // };
+  const onChangeInput = (event) => {
+    const { name, value } = event.target;
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
+  };
 
-  // const onChangeCheckbox = (e) => {
-  //   dispatch(filterCheckbox(data.data));
-  //   console.log(`checked = ${e.target.checked}`);
-  // };
+  const onChangeCheckbox = (e) => {
+    dispatch(toggleCheckbox());
+  };
 
-  // const handleChange = (value) => {
-  //   dispatch(sorterFilter({ data: data.data, value }));
+  const handleChange = (value) => {
+    dispatch(setSortBy(value));
 
-  //   console.log(`selected ${value}`);
-  // };
+    console.log(`selected ${value}`);
+  };
 
   return (
     status === "succeeded" && (
@@ -115,25 +117,25 @@ function CategoryPage() {
             <input
               type="number"
               placeholder="from"
-              // onChange={onChangeInput}
+              onChange={onChangeInput}
               className={styles.input_Number}
               name="priceFrom"
-              // value={inputValue.priceFrom}
+              value={inputValue.priceFrom}
             />
             <input
               type="number"
               placeholder="to"
-              // onChange={onChangeInput}
+              onChange={onChangeInput}
               className={styles.input_Number}
               name="priceTo"
-              // value={inputValue.priceTo}
+              value={inputValue.priceTo}
             />
           </div>
           <div className={styles.checkbox_container}>
             <div className={styles.text}>Discounted items</div>
             <input
               type="checkbox"
-              // onChange={onChangeCheckbox}
+              onChange={onChangeCheckbox}
               className={styles.input_checkbox}
             />
           </div>
@@ -141,7 +143,7 @@ function CategoryPage() {
             <p className={styles.text}>Sorted</p>
             <Select
               defaultValue="by default"
-              // onChange={handleChange}
+              onChange={handleChange}
               style={{
                 width: "200px",
                 fontWeight: "500",
@@ -167,7 +169,7 @@ function CategoryPage() {
           </div>
         </div>
         <div className={styles.cards_container}>
-          {data.data.map((item) => {
+          {filterData.data.map((item) => {
             return (
               <ProductCard
                 key={item.id}
