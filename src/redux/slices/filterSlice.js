@@ -10,50 +10,6 @@ const filterSlice = createSlice({
     sortBy: "default",
   },
   reducers: {
-    // filterPrice: (state, action) => {
-    //   const { data, priceFrom, priceTo } = action.payload;
-    //   state.data = data.filter((item) => {
-    //     return item.discont_price
-    //       ? item.discont_price >= priceFrom && item.discont_price <= priceTo
-    //       : item.price >= priceFrom && item.price <= priceTo;
-    //   });
-    // },
-    // filterCheckbox: (state, action) => {
-    //   const data = action.payload;
-    //   if (state.isChecked) {
-    //     state.data = data.filter((item) => item.discont_price !== null);
-    //   } else {
-    //     state.data = data;
-    //   }
-    // },
-    // sorterFilter: (state, action) => {
-    //   const { data, value } = action.payload;
-    //   let sortedData = [...data];
-    //   switch (value) {
-    //     case "newest":
-    //       sortedData.sort((a, b) => {
-    //         return new Date(b.updatedAt) - new Date(a.updatedAt);
-    //       });
-    //       break;
-    //     case "price: high-low":
-    //       sortedData.sort((a, b) => {
-    //         let priceA = a.discont_price ? a.discont_price : a.price;
-    //         let priceB = b.discont_price ? b.discont_price : b.price;
-    //         return priceB - priceA;
-    //       });
-    //       break;
-    //     case "price: low-high":
-    //       sortedData.sort((a, b) => {
-    //         let priceA = a.discont_price ? a.discont_price : a.price;
-    //         let priceB = b.discont_price ? b.discont_price : b.price;
-    //         return priceA - priceB;
-    //       });
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    //   state.data = sortedData;
-    // },
     setPriceFilter: (state, action) => {
       state.priceFrom = action.payload.priceFrom || 0;
       state.priceTo = action.payload.priceTo || Infinity;
@@ -64,8 +20,16 @@ const filterSlice = createSlice({
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    resetFilters: (state) => {
+      state.data = [];
+      state.isChecked = false;
+      state.priceFrom = 0;
+      state.priceTo = Infinity;
+      state.sortBy = "default";
+    },
     applyFilters: (state, action) => {
       const { data } = action.payload;
+      console.log("Raw Data:", data);
 
       let filteredData = data.filter((item) => {
         const itemPrice = item.discont_price || item.price;
@@ -77,6 +41,8 @@ const filterSlice = createSlice({
           (item) => item.discont_price !== null
         );
       }
+
+      console.log("Filtered Data:", filteredData);
 
       switch (state.sortBy) {
         case "newest":
@@ -107,6 +73,11 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setPriceFilter, toggleCheckbox, setSortBy, applyFilters } =
-  filterSlice.actions;
+export const {
+  setPriceFilter,
+  toggleCheckbox,
+  setSortBy,
+  applyFilters,
+  resetFilters,
+} = filterSlice.actions;
 export default filterSlice.reducer;

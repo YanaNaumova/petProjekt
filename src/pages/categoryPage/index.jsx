@@ -3,16 +3,18 @@ import { useParams } from "react-router-dom";
 import { fetchCategory } from "../../redux/slices/categorySlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { Select } from "antd";
 import ProductCard from "../../components/productCard";
 import RoutsBtn from "../../components/routsBtn";
 import {
   setPriceFilter,
-  toggleCheckbox,
   setSortBy,
+  toggleCheckbox,
   applyFilters,
+  resetFilters,
 } from "../../redux/slices/filterSlice";
 import CustomHeader from "../../components/customHeader";
+import FilterElement from "../../components/filterElement";
+import { useLocation } from "react-router-dom";
 
 function CategoryPage() {
   //     Переход на страницу категории при клике на категорию
@@ -48,9 +50,10 @@ function CategoryPage() {
   });
 
   const dispatch = useDispatch();
+  const location = useLocation();
   const { data, status, error } = useSelector((state) => state.category);
   const filterData = useSelector((state) => state.filter);
-
+  console.log(data.data);
   const obj = [
     {
       link: "/",
@@ -67,15 +70,17 @@ function CategoryPage() {
   ];
 
   useEffect(() => {
+    dispatch(resetFilters());
+  }, [location, dispatch]);
+
+  useEffect(() => {
     dispatch(fetchCategory(categoryId));
   }, [dispatch, categoryId]);
 
   useEffect(() => {
     const priceFrom = Number(inputValue.priceFrom) || 0;
     const priceTo = Number(inputValue.priceTo) || Infinity;
-
     dispatch(setPriceFilter({ priceFrom, priceTo }));
-
     dispatch(applyFilters({ data: data.data }));
   }, [
     inputValue,
@@ -102,8 +107,6 @@ function CategoryPage() {
 
   const handleChange = (value) => {
     dispatch(setSortBy(value));
-
-    console.log(`selected ${value}`);
   };
 
   return (
@@ -111,63 +114,13 @@ function CategoryPage() {
       <div className={styles.categoryPage_container}>
         <RoutsBtn obj={obj} />
         <CustomHeader title={data.category.title} />
-        <div className={styles.filter_container}>
-          <div className={styles.price_filter_container}>
-            <p className={styles.text}>Price</p>
-            <input
-              type="number"
-              placeholder="from"
-              onChange={onChangeInput}
-              className={styles.input_Number}
-              name="priceFrom"
-              value={inputValue.priceFrom}
-            />
-            <input
-              type="number"
-              placeholder="to"
-              onChange={onChangeInput}
-              className={styles.input_Number}
-              name="priceTo"
-              value={inputValue.priceTo}
-            />
-          </div>
-          <div className={styles.checkbox_container}>
-            <div className={styles.text}>Discounted items</div>
-            <input
-              type="checkbox"
-              onChange={onChangeCheckbox}
-              className={styles.input_checkbox}
-            />
-          </div>
-          <div className={styles.selected_container}>
-            <p className={styles.text}>Sorted</p>
-            <Select
-              defaultValue="by default"
-              onChange={handleChange}
-              style={{
-                width: "200px",
-                fontWeight: "500",
-                height: "36px",
-                lineheight: "126%",
-                color: "#282828",
-              }}
-              options={[
-                {
-                  value: "newest",
-                  label: "newest",
-                },
-                {
-                  value: "price: high-low",
-                  label: "price: high-low",
-                },
-                {
-                  value: "price: low-high",
-                  label: "price: low-high",
-                },
-              ]}
-            />
-          </div>
-        </div>
+        <FilterElement
+          onChangeInput={onChangeInput}
+          onChangeCheckbox={onChangeCheckbox}
+          handleChange={handleChange}
+          valuepriceFrom={inputValue.priceFrom}
+          valuepriceTo={inputValue.priceTo}
+        />
         <div className={styles.cards_container}>
           {filterData.data.map((item) => {
             return (
