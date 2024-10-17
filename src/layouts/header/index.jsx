@@ -18,8 +18,11 @@ function Header() {
   // ● Иконка корзины должна вести на страницу корзины.
   // ● Нужно также добавить индикатор количества товаров в корзине рядом с
   // иконкой корзины.
-  const count = useSelector((state) => state.counter.counter);
-  console.log(count);
+  const cart = useSelector((state) => state.cart.cart);
+
+  const count = cart.reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
   return (
     <header className={styles.container}>
       <NavLink to="/">

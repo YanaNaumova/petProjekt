@@ -30,14 +30,16 @@ function CartPage() {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
 
-  const items = cart.length;
+  const items = cart.reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
   const totalPrice = cart.reduce((acc, item) => {
     const price = item.product.discont_price
       ? item.product.discont_price
       : item.product.price;
     return acc + price * item.count;
   }, 0);
-  console.log(totalPrice);
+
   return (
     <div className={styles.cartPage_container}>
       <AllShowButton
@@ -91,7 +93,7 @@ function CartPage() {
                           </div>
                         </>
                       ) : (
-                        <div className={styles.price}>
+                        <div className={styles.discont_price}>
                           ${item.product.price}
                         </div>
                       )}

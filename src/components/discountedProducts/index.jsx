@@ -38,20 +38,14 @@ function DiscountedProducts() {
         {newArrSales &&
           newArrSales.map((product) => {
             return (
-              <Link
+              <ProductCard
                 key={product.id}
-                to={`/products/${product.id}`}
-                className={styles.link}
-              >
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  price={product.price}
-                  discont_price={product.discont_price}
-                  image={product.image}
-                  title={product.title}
-                />
-              </Link>
+                id={product.id}
+                price={product.price}
+                discont_price={product.discont_price}
+                image={product.image}
+                title={product.title}
+              />
             );
           })}
       </div>
