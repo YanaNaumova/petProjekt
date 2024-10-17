@@ -16,6 +16,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
+    discountedProducts: [],
     status: "idle",
     error: null,
   },
@@ -28,6 +29,10 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.products = action.payload;
+
+        state.discountedProducts = state.products.filter(
+          (product) => product.discont_price > 0
+        );
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";

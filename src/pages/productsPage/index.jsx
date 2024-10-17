@@ -22,13 +22,11 @@ function ProductsPage() {
   // ● Карточки товаров с возможностью добавления товара в корзину.
   // ● Если на товар действует скидка, это отображается на карточке.
   const { products, status, error } = useSelector((state) => state.products);
-  console.log(products);
   const [inputValue, setInputValue] = useState({
     priceFrom: "",
     priceTo: "",
   });
   const filterData = useSelector((state) => state.filter);
-  console.log(filterData);
   const dispatch = useDispatch();
   const location = useLocation();
 
