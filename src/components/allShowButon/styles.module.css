@@ -65,7 +65,7 @@
   font-weight: 500;
   line-height: calc(1 + (1.26 - 1) * ((100vw - 393px) / (1440 - 393)));
   border: 1px solid #dddddd;
-  max-width: calc(100px + (142 - 100) * ((100vw - 393px) / (1440 - 393)));
+  max-width: calc(120px + (142 - 120) * ((100vw - 393px) / (1440 - 393)));
   width: 100%;
   height: calc(32px + (36 - 32) * ((100vw - 393px) / (1440 - 393)));
   margin-top: calc(10px + (22 - 10) * ((100vw - 393px) / (1440 - 393)));

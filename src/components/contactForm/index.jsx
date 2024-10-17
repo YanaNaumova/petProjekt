@@ -5,6 +5,8 @@ import formInfo from "../../utils/validations";
 import UIInput from "../uIInput";
 import { notification } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
+import { clearCart } from "../../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 function ContactForm({ items, totalPrice }) {
   const {
@@ -13,6 +15,7 @@ function ContactForm({ items, totalPrice }) {
     formState: { errors },
     reset,
   } = useForm({ mode: "all" });
+  const dispatch = useDispatch();
 
   async function sendSaleData(orderData) {
     try {
@@ -40,6 +43,7 @@ function ContactForm({ items, totalPrice }) {
     sendSaleData(orderData);
     reset();
     openNotification();
+    dispatch(clearCart());
   }
 
   const [api, contextHolder] = notification.useNotification();
