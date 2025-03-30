@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/petProjekt/static/css/main.945d0fdf.css",
-    "main.js": "/petProjekt/static/js/main.cd62aae2.js",
+    "main.js": "/petProjekt/static/js/main.0d229b18.js",
     "static/media/head.png": "/petProjekt/static/media/head.426742e1e3edf08581b3.png",
     "static/media/map.png": "/petProjekt/static/media/map.eb269798ae20d3b696e4.png",
     "static/media/firstOrder.png": "/petProjekt/static/media/firstOrder.d211b12126a20cbc8825.png",
@@ -15,10 +15,10 @@
     "static/media/plus.svg": "/petProjekt/static/media/plus.10f92ec21ea90f57ac9b58c959ec22c2.svg",
     "static/media/minus.svg": "/petProjekt/static/media/minus.490889845cadc2a58691f36182ba72c1.svg",
     "main.945d0fdf.css.map": "/petProjekt/static/css/main.945d0fdf.css.map",
-    "main.cd62aae2.js.map": "/petProjekt/static/js/main.cd62aae2.js.map"
+    "main.0d229b18.js.map": "/petProjekt/static/js/main.0d229b18.js.map"
   },
   "entrypoints": [
     "static/css/main.945d0fdf.css",
-    "static/js/main.cd62aae2.js"
+    "static/js/main.0d229b18.js"
   ]
 }
