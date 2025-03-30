@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/petProjekt/static/css/main.945d0fdf.css",
+    "main.js": "/petProjekt/static/js/main.c5911fb1.js",
+    "static/media/head.png": "/petProjekt/static/media/head.426742e1e3edf08581b3.png",
+    "static/media/map.png": "/petProjekt/static/media/map.eb269798ae20d3b696e4.png",
+    "static/media/firstOrder.png": "/petProjekt/static/media/firstOrder.d211b12126a20cbc8825.png",
+    "static/media/dog.png": "/petProjekt/static/media/dog.f539d104ea95f6919f0b.png",
+    "static/media/logo.svg": "/petProjekt/static/media/logo.1a71d11a67f59d3738f85a9f9e8476aa.svg",
+    "static/media/ic-whatsapp.svg": "/petProjekt/static/media/ic-whatsapp.976b56539522ecec4d232193ad478f23.svg",
+    "index.html": "/petProjekt/index.html",
+    "static/media/basketEmpty.svg": "/petProjekt/static/media/basketEmpty.5811eced3fe8014209a8d56d3d27c586.svg",
+    "static/media/ic-instagram.svg": "/petProjekt/static/media/ic-instagram.0535a50a5781079486ef5b060a7b6c86.svg",
+    "static/media/ic x.svg": "/petProjekt/static/media/ic x.9c8dd88c7706cf7c512fed86a69d9ce7.svg",
+    "static/media/plus.svg": "/petProjekt/static/media/plus.10f92ec21ea90f57ac9b58c959ec22c2.svg",
+    "static/media/minus.svg": "/petProjekt/static/media/minus.490889845cadc2a58691f36182ba72c1.svg",
+    "main.945d0fdf.css.map": "/petProjekt/static/css/main.945d0fdf.css.map",
+    "main.c5911fb1.js.map": "/petProjekt/static/js/main.c5911fb1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.945d0fdf.css",
+    "static/js/main.c5911fb1.js"
+  ]
+}
