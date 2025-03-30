@@ -7,6 +7,7 @@ import UIInput from "../uIInput";
 import { getDiscountRequestSent } from "../../redux/slices/getDiscountSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+const API_URL = process.env.REACT_APP_API_URL;
 function FirstOrderDiscount() {
   const {
     register,
@@ -25,15 +26,11 @@ function FirstOrderDiscount() {
 
   async function sendSaleData(saleData) {
     try {
-      const response = await axios.post(
-        "http://localhost:3333/sale/send",
-        saleData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(`${API_URL}/sale/send`, saleData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error);

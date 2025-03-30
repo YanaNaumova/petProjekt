@@ -8,6 +8,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { clearCart } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
+const API_URL = process.env.REACT_APP_API_URL;
 function ContactForm({ items, totalPrice }) {
   const {
     register,
@@ -19,15 +20,11 @@ function ContactForm({ items, totalPrice }) {
 
   async function sendSaleData(orderData) {
     try {
-      const response = await axios.post(
-        "http://localhost:3333/order/send",
-        orderData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(`${API_URL}/order/send`, orderData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error);

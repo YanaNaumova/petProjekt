@@ -43,5 +43,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://yananaumova.github.io/petProjekt"
+  "homepage": "https://yananaumova.github.io/petProjekt",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }

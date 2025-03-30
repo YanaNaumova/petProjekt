@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
-    const response = await axios.get("http://localhost:3333/categories/all");
+    const response = await axios.get(`${API_URL}/categories/all`);
     return response.data.map((category) => ({
       ...category,
-      image: `http://localhost:3333${category.image}`,
+      image: `${API_URL}${category.image}`,
     }));
   }
 );
